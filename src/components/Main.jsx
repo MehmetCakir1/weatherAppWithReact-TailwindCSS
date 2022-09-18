@@ -6,7 +6,7 @@ import Header from "./Header";
 
 const Main = () => {
   const [searchText,setSearchText]=useState("")
-  const [info,setInfo]=useState([...JSON.parse(localStorage.getItem("info"))] || [])
+  const [info,setInfo]=useState(localStorage.getItem("info") ? [...JSON.parse(localStorage.getItem("info"))] : [])
   const [error,setError]=useState()
 
 
