@@ -74,7 +74,7 @@ useEffect(() => {
       </div>
       <p className="min-h-[35px] text-center flex items-center justify-center font-serif font-bold">{error}</p>
     </form>
-      <ul className="container mt-9 grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 justify-center">
+      <ul className="container mt-5 grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 justify-center ">
         {info?.map((item) => (
           <WeatherCard key={item.id} data={item} info={info} setInfo={setInfo}/>
         ))}

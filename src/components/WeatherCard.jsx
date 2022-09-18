@@ -17,7 +17,7 @@ const WeatherCard = ({ data,info,setInfo }) => {
         <sup className="text-6xl">°C</sup>
       </div>
       <figure className="flex items-center justify-center ">
-        <img src={iconUrl} alt="city-icon" className="w-[150px] "/>
+        <img src={iconUrl} alt="city-icon" className="w-[130px] "/>
         <figcaption className="capitalize">{weather[0].description}</figcaption>
       </figure>
       <button className="m-auto block text-xl font-bold text-white bg-red-400 rounded-md px-3 py-1 mt-3" onClick={()=>removeItem(id)}>DELETE</button>
