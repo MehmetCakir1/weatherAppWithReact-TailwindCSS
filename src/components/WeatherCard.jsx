@@ -7,7 +7,7 @@ const WeatherCard = ({ data,info,setInfo }) => {
     setInfo(info?.filter((item)=>item.id !==id))
   }
   return (
-    <li className="border border-gray-400 rounded-xl bg-gray-400 max-w-[305px] pb-3">
+    <li className="border border-gray-400 rounded-xl bg-emerald-300 max-w-[305px] pb-3">
       <h2 className="font-bold text-2xl text-center py-3 text-red-800">
         <span>{name}</span>
         <sup>{sys.country}</sup>
