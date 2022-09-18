@@ -1,10 +1,12 @@
 import axios from "axios"
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import Footer from "./Footer";
 import WeatherCard from "./WeatherCard"
+import Header from "./Header";
 
 const Main = () => {
   const [searchText,setSearchText]=useState("")
-  const [info,setInfo]=useState([])
+  const [info,setInfo]=useState([...JSON.parse(localStorage.getItem("info"))])
   const [error,setError]=useState()
 
 
@@ -47,9 +49,17 @@ const handleSubmit = (e) => {
   e.preventDefault();
   getWeatherData();
   setSearchText("");
+  localStorage.setItem("info",JSON.stringify(info))
 };
+useEffect(() => {
+  localStorage.setItem("info", JSON.stringify(info));
+}, [info]);
+
+
   return (
-    <section className="flex flex-col justify-center items-center">
+    <main>
+    <Header/>
+        <section className="flex flex-col justify-center items-center">
     <form onSubmit={handleSubmit} className="w-full max-w-[35rem] flex flex-col justify-between">
       <div className="flex items-center">
         <input
@@ -58,7 +68,7 @@ const handleSubmit = (e) => {
         placeholder="Search for a city"
         value={searchText}
         // autoFocus
-        className="w-9/12 p-2 border border-gray-500 text-xl"
+        className="w-9/12 p-2 border border-gray-500 text-xl mx-3"
       />
       <button type="submit" className="w-3/12 bg-red-400 text-xl font-bold font-mono text-white hover:bg-green-400 transition-colors 0.3s ease-in py-2 rounded-lg">SUBMIT</button>
       </div>
@@ -66,10 +76,13 @@ const handleSubmit = (e) => {
     </form>
       <ul className="container mt-9 grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 justify-center">
         {info?.map((item) => (
-          <WeatherCard key={item.id} data={item} />
+          <WeatherCard key={item.id} data={item} info={info} setInfo={setInfo}/>
         ))}
       </ul>
   </section>
+  <Footer info={info}/>
+    </main>
+
   )
         }
 export default Main
